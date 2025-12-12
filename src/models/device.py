@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from typing import Optional
 
 @dataclass
@@ -20,3 +20,6 @@ class Device:
         if self.os_version:
             base += f" - {self.os_version}"
         return base
+    
+    def to_dict(self):
+        return asdict(self)
