@@ -1,6 +1,6 @@
 from src.models.device import Device
 from src.storage.file_storage import save_inventory_to_json
-from config.settings import load_yaml_inventory
+from config.settings import load_yaml_inventory, get_device_credentials
 
 
 class InventoryManager:
@@ -15,6 +15,7 @@ class InventoryManager:
     def _convert_to_devices(self, raw_devices):
         devices = []
         for each in raw_devices:
+            usern, passw = get_device_credentials(each)
             device = Device(
                 hostname=each.get("hostname").strip(),
                 mgmt_ip=each.get("mgmt_ip").strip(),
@@ -22,7 +23,9 @@ class InventoryManager:
                 role=each.get("role").strip(),
                 vendor=each.get("vendor") or None,
                 os_type=each.get("os_type") or None,
-                os_version=each.get("os_version") or None
+                os_version=each.get("os_version") or None,
+                username= usern,
+                password= passw
             )
             devices.append(device)
         return devices

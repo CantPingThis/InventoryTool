@@ -10,6 +10,8 @@ class Device:
     vendor: Optional[str] = None
     os_type: Optional[str] = None
     os_version: Optional[str] = None
+    username: Optional[str] = None
+    password: Optional[str] = None
 
     def __str__(self):
         base = f"Device: {self.hostname} ({self.mgmt_ip}) - {self.site} - {self.role}"
