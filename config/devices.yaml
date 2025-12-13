@@ -3,26 +3,17 @@ meta:
   version: 1
   generated_at: "2025-12-11T19:27:00Z"
 devices:
-  - hostname: r1
-    mgmt_ip: 10.0.0.11
-    site: lab
-    role: core
-    vendor: cisco
-    os_type: iosxe
-    os_version: 17.6.4
-  - hostname: sw1
-    mgmt_ip: 10.0.0.21
+  - hostname: HOM-SWA-002
+    mgmt_ip: 10.0.999.5
     site: lab
     role: access
     vendor: cisco
-    os_type: ios
-    os_version: 17.9.3
-  - hostname: fw1
-    mgmt_ip: 10.0.0.31
+    os_type: cisco_ios
+    os_version: 17.2.7
+  - hostname: HOM-SWA-001
+    mgmt_ip: 10.0.98.5
     site: lab
-    role: firewall
-    vendor: paloalto
-    os_type: panos
-    os_version: 
-    username: 
-    password: 
+    role: access
+    vendor: cisco
+    os_type: cisco_ios
+    os_version: 17.2.7

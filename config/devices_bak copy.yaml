@@ -1,0 +1,28 @@
+# inventory.yaml
+meta:
+  version: 1
+  generated_at: "2025-12-11T19:27:00Z"
+devices:
+  - hostname: r1
+    mgmt_ip: 10.0.0.11
+    site: lab
+    role: core
+    vendor: cisco
+    os_type: iosxe
+    os_version: 17.6.4
+  - hostname: sw1
+    mgmt_ip: 10.0.0.21
+    site: lab
+    role: access
+    vendor: cisco
+    os_type: ios
+    os_version: 17.9.3
+  - hostname: fw1
+    mgmt_ip: 10.0.0.31
+    site: lab
+    role: firewall
+    vendor: paloalto
+    os_type: panos
+    os_version: 
+    username: FW_USERNAME
+    password: FW_PASSWORD

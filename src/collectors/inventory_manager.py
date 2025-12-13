@@ -2,7 +2,6 @@ from src.models.device import Device
 from src.storage.file_storage import save_inventory_to_json
 from config.settings import load_yaml_inventory, get_device_credentials
 
-
 class InventoryManager:
     def __init__(self):
         self.devices = []
@@ -23,9 +22,7 @@ class InventoryManager:
                 role=each.get("role").strip(),
                 vendor=each.get("vendor") or None,
                 os_type=each.get("os_type") or None,
-                os_version=each.get("os_version") or None,
-                username= usern,
-                password= passw
+                os_version=each.get("os_version") or None
             )
             devices.append(device)
         return devices
