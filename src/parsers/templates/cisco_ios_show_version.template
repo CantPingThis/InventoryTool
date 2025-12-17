@@ -1,0 +1,11 @@
+Value HOSTNAME (\S+)
+Value MODEL (\S+)
+Value SERIAL_NUMBER (\S+)
+Value OS_VERSION (\S+)
+Value UPTIME (.+)
+
+Start
+  ^\s*Model\s+number\s*:\s+${MODEL}
+  ^\s*System\s+[Ss]erial\s+[Nn]umber\s*:\s+${SERIAL_NUMBER}
+  ^\s*Cisco\s+IOS\s+.*Version\s+${OS_VERSION},
+  ^\s*${HOSTNAME}\s+uptime\s+is\s+${UPTIME}
