@@ -34,6 +34,9 @@ class Device:
             if self.uptime:
                 scan_result += f" - Uptime: {self.uptime}"
             base += scan_result
+        if self.scan_status == "partial":
+            scan_result = f"\nLast scan status : Partial, last attempt : {self.last_scanned}"
+            base += scan_result
         if self.scan_status == "failed":
             scan_result = f"\nLast scan status : Failed, last attempt : {self.last_scanned}"
             base += scan_result

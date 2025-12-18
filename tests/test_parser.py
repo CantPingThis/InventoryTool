@@ -1,9 +1,8 @@
-import textfsm
-from pathlib import Path
+from src.parsers.cisco_ios_parser import parse_show_version
 
-"""
-Example output for show version on a cisco IOS Switch :
-
+def test_parse_show_version_success():
+    # Arrange - Set up test data
+    input_data = """
 Cisco IOS Software, C3560CX Software (C3560CX-UNIVERSALK9-M), Version 15.2(7)E10, RELEASE SOFTWARE (fc3)
 Technical Support: http://www.cisco.com/techsupport
 Copyright (c) 1986-2024 by Cisco Systems, Inc.
@@ -70,35 +69,18 @@ Switch Ports Model                     SW Version            SW Image
 
 Configuration register is 0xF
 """
+    # Act - Call the tested function
+    result = parse_show_version(input_data)
 
-project_dir = Path(__file__).parent.parent.parent
-template_path = "/src/parsers/templates/"
-template_path = str(project_dir) + template_path
+    # Assert - Check if result if what you expect
+    assert result == {'HOSTNAME': 'HOM-SWA-001', 'MODEL': 'WS-C3560CX-12PC-S', 'SERIAL_NUMBER': 'FOC2323Y11S', 'OS_VERSION': '15.2(7)E10', 'UPTIME': '8 weeks, 1 day, 5 hours, 56 minutes'}
 
-def parse_show_version(text_to_parse):
-    try:
-        """
-        goal is to parse the output of the show version command runned on a Cisco IOS Switch
+def test_parse_show_version_invalid():
+    # Arrange - Set up test data
+    input_data = "Invalid command"
 
-        output :
-        - device model
-        - serial number
-        - OS version
-        - uptime
-        """
+    # Act - Call the tested function
+    result = parse_show_version(input_data)
 
-        with open(template_path +  "cisco_ios_show_version.template") as template:
-            fsm = textfsm.TextFSM(template)
-
-        parsed_output = fsm.ParseText(text_to_parse)
-
-        if parsed_output:
-            keys = fsm.header  # Gets the column names from your template
-            parsed_output_dict = dict(zip(keys, parsed_output[0]))
-            return parsed_output_dict
-        else:
-            return None
-
-    except Exception as e:
-        print(f"not able to parse this output : {e}")
-        return None
+    # Assert - Check if result if what you expect
+    assert result is None

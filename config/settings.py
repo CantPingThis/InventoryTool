@@ -5,9 +5,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def load_yaml_inventory():
-    config_dir = Path(__file__).parent
-    yaml_path = config_dir / "devices.yaml"
+def load_yaml_inventory(path=None):
+    if path is None:
+        # Default behavior - user config/devices.yaml
+        config_dir = Path(__file__).parent
+        yaml_path = config_dir / "devices.yaml"
+    else:
+        yaml_path = Path(path)
     if not yaml_path.exists():
         print("File does not exist")
         raise FileNotFoundError(f"Cannot find {yaml_path}")

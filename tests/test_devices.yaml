@@ -1,0 +1,7 @@
+devices:
+  - hostname: TEST-SW-001
+    mgmt_ip: 192.168.1.1
+    site: TEST-LAB
+    role: access
+    os_type: cisco_ios
+    vendor: Cisco

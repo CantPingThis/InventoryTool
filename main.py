@@ -17,7 +17,7 @@ def main():
         if output.get('success') == True:
             success_device.append(device.hostname)
             print(f"\nScanned {device.hostname}:")
-            print(f"    Version output: {len(output['version'])} characters")
+            print(f"    Version output: {output['version']}")
             print(f"    Inventory output: {len(output['inventory'])} characters")
         else:
             print(f"Failed to scan device {device.hostname}: {output.get('error', 'Unknown error')}")

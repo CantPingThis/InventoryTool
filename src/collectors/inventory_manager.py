@@ -6,8 +6,8 @@ class InventoryManager:
     def __init__(self):
         self.devices = []
     
-    def load_from_yaml(self):
-        raw_devices = load_yaml_inventory()
+    def load_from_yaml(self, path=None):
+        raw_devices = load_yaml_inventory(path)
         self.devices = self._convert_to_devices(raw_devices)
         return self.devices
     
